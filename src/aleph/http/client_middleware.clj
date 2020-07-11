@@ -858,24 +858,31 @@
     resp))
 
 (defmethod coerce-response-body :json [req resp]
+  {:pre [json-enabled?]}
   (coerce-json-body req resp true false))
 
 (defmethod coerce-response-body :json-strict [req resp]
+  {:pre [json-enabled?]}
   (coerce-json-body req resp true true))
 
 (defmethod coerce-response-body :json-strict-string-keys [req resp]
+  {:pre [json-enabled?]}
   (coerce-json-body req resp false true))
 
 (defmethod coerce-response-body :json-string-keys [req resp]
+  {:pre [json-enabled?]}
   (coerce-json-body req resp false false))
 
 (defmethod coerce-response-body :clojure [req resp]
+  {:pre [transit-enabled?]}
   (coerce-clojure-body req resp))
 
 (defmethod coerce-response-body :transit+json [req resp]
+  {:pre [transit-enabled?]}
   (coerce-transit-body req resp :json))
 
 (defmethod coerce-response-body :transit+msgpack [req resp]
+  {:pre [transit-enabled?]}
   (coerce-transit-body req resp :msgpack))
 
 (defmethod coerce-response-body :string [{:keys [as]} {:keys [body] :as resp}]
