@@ -3,8 +3,11 @@
 Aleph exposes data from the network as a [Manifold](https://github.com/ztellman/manifold) stream, which can easily be transformed into a `java.io.InputStream`, [core.async](https://github.com/clojure/core.async) channel, Clojure sequence, or [many other byte representations](https://github.com/ztellman/byte-streams).  It exposes simple default wrappers for HTTP, TCP, and UDP, but allows access to full performance and flexibility of the underlying [Netty](https://github.com/netty/netty) library.
 
 ```clj
-[aleph "0.4.6"]
+;; Build and install locally - not published to clojars.
+[msync/aleph "0.4.7-alpha6"]
 ```
+#### Disclaimer
+This fork exists purely to scratch some itches. Doesn't aspire to be a replacement.
 
 ### HTTP
 
