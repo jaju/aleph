@@ -23,7 +23,7 @@
      ChannelInboundHandler
      ChannelOutboundHandler
      ChannelHandlerContext
-     ChannelInitializer]
+     ChannelInitializer AdaptiveRecvByteBufAllocator]
     [io.netty.channel.epoll Epoll EpollEventLoopGroup
      EpollServerSocketChannel
      EpollSocketChannel
@@ -1024,10 +1024,12 @@
           pipeline-builder)]
 
     (try
-      (let [b (doto (ServerBootstrap.)
+      (let [allocator (doto (AdaptiveRecvByteBufAllocator.)
+                        (.maxMessagesPerRead Integer/MAX_VALUE))
+            b (doto (ServerBootstrap.)
                 (.option ChannelOption/SO_BACKLOG (int 1024))
                 (.option ChannelOption/SO_REUSEADDR true)
-                (.option ChannelOption/MAX_MESSAGES_PER_READ Integer/MAX_VALUE)
+                (.option ChannelOption/RCVBUF_ALLOCATOR allocator)
                 (.group group)
                 (.channel channel)
                 (.childHandler (pipeline-initializer pipeline-builder))
