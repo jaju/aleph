@@ -48,21 +48,21 @@ Aleph attempts to mimic the clj-http API and capabilities fully. It supports mul
 
 * proxy configuration should be set for the connection when seting up a connection pool, per-request proxy setups are not allowed
 
-* HTTP proxy functionality is extended with tunneling settings, optional HTTP headers and connection timeout control, see [all configuration keys](https://github.com/ztellman/aleph/blob/d33c76d6c7d1bf9788369fe6fd9d0e56434c8244/src/aleph/http.clj#L122-L132)
+* HTTP proxy functionality is extended with tunneling settings, optional HTTP headers and connection timeout control, see [all configuration keys](https://github.com/jaju/aleph/blob/c5d1545047000548fe2f6bdf6eb391abad1a6089/src/aleph/http.clj#L128-L138)
 
 * `:proxy-ignore-hosts` is not supported
 
-* both cookies middleware and built-in cookies storages do not support cookie params obsoleted since RFC2965: comment, comment URL, discard, version (see the full structure of the [cookie](https://github.com/ztellman/aleph/blob/d33c76d6c7d1bf9788369fe6fd9d0e56434c8244/src/aleph/http/client_middleware.clj#L645-L655))
+* both cookies middleware and built-in cookies storages do not support cookie params obsoleted since RFC2965: comment, comment URL, discard, version (see the full structure of the [cookie](https://github.com/jaju/aleph/blob/c5d1545047000548fe2f6bdf6eb391abad1a6089/src/aleph/http/client_middleware.clj#L627-L637))
 
 * when using `:debug`, `:save-request?` and `:debug-body?` options, corresponding requests would be stored in `:aleph/netty-request`, `:aleph/request`, `:aleph/request-body` keys of the response map
 
 * `:response-interceptor` option is not supported
 
-* Aleph introduces `:log-activity` connection pool [configuration](https://github.com/ztellman/aleph/blob/d33c76d6c7d1bf9788369fe6fd9d0e56434c8244/src/aleph/http.clj#L120) to switch on the logging of the connections status changes as well as requests/response hex dumps
+* Aleph introduces `:log-activity` connection pool [configuration](https://github.com/jaju/aleph/blob/c5d1545047000548fe2f6bdf6eb391abad1a6089/src/aleph/http.clj#L126) to switch on the logging of the connections status changes as well as requests/response hex dumps
 
 * `:cache` and `:cache-config` options are not supported as for now
 
-Aleph client also supports fully async and [highly customizable](https://github.com/ztellman/aleph/blob/d33c76d6c7d1bf9788369fe6fd9d0e56434c8244/src/aleph/netty.clj#L783-L796) DNS resolver.
+Aleph client also supports fully async and [highly customizable](https://github.com/jaju/aleph/blob/c5d1545047000548fe2f6bdf6eb391abad1a6089/src/aleph/netty.clj#L854-L868) DNS resolver.
 
 To learn more, [read the example code](http://aleph.io/examples/literate.html#aleph.examples.http).
 
